@@ -28,9 +28,52 @@
         {% endif %}
 
         <div class="onyx-login__actions">
-            <button class="onyx-login__button onyx-login__button--primary" type="button" data-onyx-open-login>
-                {{ is_rtl ? 'تسجيل الدخول برقم الجوال' : 'Sign in with mobile' }}
-            </button>
+            <form class="onyx-login__form" data-onyx-phone-form novalidate>
+                <div class="onyx-login__step" data-onyx-phone-step>
+                    <label class="sr-only" for="onyx-mobile">{{ is_rtl ? 'رقم الجوال' : 'Mobile number' }}</label>
+                    <div class="onyx-login__phone">
+                        <strong aria-hidden="true">+966</strong>
+                        <input id="onyx-mobile"
+                               name="phone"
+                               type="tel"
+                               inputmode="numeric"
+                               autocomplete="tel-national"
+                               maxlength="12"
+                               enterkeyhint="send"
+                               placeholder="5XX XXX XXXX"
+                               aria-describedby="onyx-login-message"
+                               data-onyx-phone-input>
+                    </div>
+                    <button class="onyx-login__button onyx-login__button--primary" type="submit" data-onyx-send-code>
+                        {{ is_rtl ? 'إرسال رمز التحقق' : 'Send verification code' }}
+                    </button>
+                </div>
+
+                <div class="onyx-login__step" data-onyx-code-step hidden>
+                    <p class="onyx-login__hint" data-onyx-code-hint></p>
+                    <label class="sr-only" for="onyx-code">{{ is_rtl ? 'رمز التحقق' : 'Verification code' }}</label>
+                    <input class="onyx-login__code"
+                           id="onyx-code"
+                           name="code"
+                           type="text"
+                           inputmode="numeric"
+                           autocomplete="one-time-code"
+                           minlength="4"
+                           maxlength="6"
+                           enterkeyhint="done"
+                           placeholder="••••"
+                           data-onyx-code-input>
+                    <button class="onyx-login__button onyx-login__button--primary" type="submit" data-onyx-verify-code>
+                        {{ is_rtl ? 'تأكيد رمز التحقق' : 'Verify code' }}
+                    </button>
+                    <div class="onyx-login__code-actions">
+                        <button type="button" data-onyx-change-phone>{{ is_rtl ? 'تغيير الرقم' : 'Change number' }}</button>
+                        <button type="button" data-onyx-resend-code>{{ is_rtl ? 'إعادة إرسال الرمز' : 'Resend code' }}</button>
+                    </div>
+                </div>
+
+                <p class="onyx-login__message" id="onyx-login-message" role="status" aria-live="polite" data-onyx-message></p>
+            </form>
 
             <button class="onyx-login__button onyx-login__button--guest" type="button" data-onyx-continue-guest>
                 {{ is_rtl ? 'الدخول كزائر' : 'Continue as guest' }}
@@ -39,10 +82,8 @@
 
         <footer class="onyx-login__footer">
             <a href="{{ store.url }}">{{ is_rtl ? 'الرئيسية' : 'Home' }}</a>
-            {% if store.contacts.email %}
-                <span aria-hidden="true">•</span>
-                <a href="mailto:{{ store.contacts.email }}">{{ is_rtl ? 'تواصل مع الدعم' : 'Contact support' }}</a>
-            {% endif %}
+            <span aria-hidden="true">•</span>
+            <a href="mailto:{{ store.contacts.email|default('support@salla.sa') }}">{{ is_rtl ? 'تواصل مع الدعم' : 'Contact support' }}</a>
         </footer>
     </div>
 </section>

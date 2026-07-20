@@ -54,6 +54,8 @@ $onyx-gold-dark: #9c7424;
   &__language span { min-width: 105px; padding: 7px 18px; }
   &__language .is-active { color: #fff; background: rgba(255,255,255,.15); }
   &__actions { display: grid; gap: 16px; margin-top: auto; }
+  &__form, &__step { display: grid; gap: 16px; }
+  &__step[hidden] { display: none; }
 
   &__phone,
   &__button {
@@ -75,12 +77,49 @@ $onyx-gold-dark: #9c7424;
     text-align: left;
   }
 
-  &__phone strong { padding: 18px 24px; border-right: 1px solid rgba(255,255,255,.18); }
-  &__phone span { padding: 0 20px; color: rgba(255,255,255,.3); letter-spacing: .08em; }
+  &__phone strong { flex: 0 0 auto; padding: 18px 24px; border-right: 1px solid rgba(255,255,255,.18); }
+  &__phone input {
+    width: 100%;
+    min-width: 0;
+    padding: 0 20px;
+    border: 0;
+    outline: 0;
+    color: #fff;
+    background: transparent;
+    font: inherit;
+    font-size: 17px;
+    letter-spacing: .08em;
+  }
+  &__phone input::placeholder { color: rgba(255,255,255,.3); }
+  &__phone:focus-within { border-color: $onyx-gold; box-shadow: 0 0 0 3px rgba(212,175,110,.12); }
+  &__code {
+    width: 100%;
+    min-height: 58px;
+    padding: 0 20px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 17px;
+    outline: 0;
+    color: #fff;
+    background: rgba(255,255,255,.06);
+    font: inherit;
+    font-size: 24px;
+    letter-spacing: .45em;
+    text-align: center;
+    direction: ltr;
+  }
+  &__code:focus { border-color: $onyx-gold; box-shadow: 0 0 0 3px rgba(212,175,110,.12); }
+  &__hint, &__message { margin: 0; color: rgba(255,255,255,.72); text-align: center; font-size: 13px; }
+  &__message:empty { display: none; }
+  &__message.is-error { color: #ff9b9b; }
+  &__code-actions { display: flex; justify-content: space-between; gap: 16px; }
+  &__code-actions button { padding: 2px 0; border: 0; color: rgba(255,255,255,.7); background: none; font-size: 13px; }
+  &__code-actions button:hover { color: $onyx-gold; }
   &__button--primary { border-color: rgba(212,175,110,.55); background: linear-gradient(135deg, $onyx-gold, $onyx-gold-dark, $onyx-gold); color: #090909; font-weight: 700; }
   &__button--guest { background: rgba(0,0,0,.28); }
   &__phone:hover, &__button:hover { border-color: rgba(212,175,110,.75); }
   &__button:active { transform: scale(.99); }
+  &__button:disabled, &__code-actions button:disabled { cursor: wait; opacity: .58; }
+  &__button.is-loading { filter: saturate(.45); }
 
   &__footer {
     display: flex;
