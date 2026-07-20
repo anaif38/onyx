@@ -50,7 +50,8 @@ function initOnyxLogin() {
     const showCodeStep = () => {
         phoneStep.hidden = true;
         codeStep.hidden = false;
-        gate.querySelector('[data-onyx-code-hint]').textContent = `تم إرسال الرمز إلى +966 ${mobile}`;
+        const lastDigits = mobile.slice(-2);
+        gate.querySelector('[data-onyx-code-hint]').textContent = `تم إرسال رمز التحقق إلى رقم ينتهي بـ ${lastDigits}`;
         codeInput.focus();
     };
 
