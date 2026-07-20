@@ -1,0 +1,50 @@
+{% set is_rtl = language.code == 'ar' %}
+
+<section class="onyx-login" data-onyx-login-gate aria-label="{{ is_rtl ? 'بوابة تسجيل الدخول' : 'Login gateway' }}">
+    <div class="onyx-login__background" aria-hidden="true">
+        <video class="onyx-login__video" autoplay muted loop playsinline preload="metadata">
+            <source src="{{ 'images/onyx/onyx-login-background.mp4'|asset }}" type="video/mp4">
+        </video>
+        <div class="onyx-login__shade"></div>
+    </div>
+
+    <div class="onyx-login__content">
+        <header class="onyx-login__brand">
+            <img class="onyx-login__logo"
+                 src="{{ 'images/onyx/onyx-logo.png'|asset }}"
+                 width="140"
+                 height="140"
+                 alt="ONYX">
+            <p>{{ is_rtl ? 'نبيع الثقة في قرار الشراء' : 'Confidence in every purchase decision' }}</p>
+        </header>
+
+        <div class="onyx-login__rule"></div>
+
+        {% if store.settings.is_multilingual %}
+            <button class="onyx-login__language" type="button" data-onyx-change-language>
+                <span class="{{ is_rtl ? 'is-active' : '' }}">العربية</span>
+                <span class="{{ not is_rtl ? 'is-active' : '' }}">English</span>
+            </button>
+        {% endif %}
+
+        <div class="onyx-login__actions">
+            <button class="onyx-login__phone" type="button" data-onyx-open-login>
+                <strong>+966</strong>
+                <span>5XX XXX XXXX</span>
+            </button>
+
+            <button class="onyx-login__button onyx-login__button--primary" type="button" data-onyx-open-login>
+                {{ is_rtl ? 'إرسال رمز التحقق' : 'Send verification code' }}
+            </button>
+
+            <button class="onyx-login__button onyx-login__button--guest" type="button" data-onyx-continue-guest>
+                {{ is_rtl ? 'الدخول كزائر' : 'Continue as guest' }}
+            </button>
+        </div>
+
+        <footer class="onyx-login__footer">
+            <a href="{{ store.url }}">{{ is_rtl ? 'الرئيسية' : 'Home' }}</a>
+            {% if store.contacts.email %}<a href="mailto:{{ store.contacts.email }}">{{ is_rtl ? 'الدعم' : 'Support' }}</a>{% endif %}
+        </footer>
+    </div>
+</section>
