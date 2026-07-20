@@ -16,6 +16,14 @@ function initOnyxLogin() {
         return;
     }
 
+    gate.querySelector('[data-onyx-open-login]')?.addEventListener('click', async () => {
+        await customElements.whenDefined('salla-login-modal');
+        const login = getComponent('salla-login-modal');
+        if (login && typeof login.open === 'function') {
+            login.open();
+        }
+    });
+
     gate.querySelector('[data-onyx-continue-guest]')?.addEventListener('click', () => {
         window.sessionStorage.setItem(guestSessionKey, '1');
         closeGate(gate);
