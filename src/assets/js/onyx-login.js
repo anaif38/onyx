@@ -7,13 +7,6 @@ function closeGate(gate) {
     window.setTimeout(() => gate.remove(), 350);
 }
 
-function openSallaLogin() {
-    const login = getComponent('salla-login-modal');
-    if (login && typeof login.open === 'function') {
-        login.open();
-    }
-}
-
 function initOnyxLogin() {
     const gate = getComponent('[data-onyx-login-gate]');
     if (!gate) return;
@@ -22,10 +15,6 @@ function initOnyxLogin() {
         gate.remove();
         return;
     }
-
-    gate.querySelectorAll('[data-onyx-open-login]').forEach(button => {
-        button.addEventListener('click', openSallaLogin);
-    });
 
     gate.querySelector('[data-onyx-continue-guest]')?.addEventListener('click', () => {
         window.sessionStorage.setItem(guestSessionKey, '1');

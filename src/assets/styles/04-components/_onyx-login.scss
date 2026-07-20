@@ -55,6 +55,16 @@ $onyx-gold-dark: #9c7424;
   &__language .is-active { color: #fff; background: rgba(255,255,255,.15); }
   &__actions { display: grid; gap: 16px; margin-top: auto; }
 
+  &__auth {
+    overflow: hidden;
+    border: 1px solid rgba(212,175,110,.3);
+    border-radius: 20px;
+    background: rgba(0,0,0,.42);
+    backdrop-filter: blur(14px);
+  }
+
+  &__auth salla-login-modal { display: block; color: #fff; }
+
   &__phone,
   &__button {
     width: 100%;

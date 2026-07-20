@@ -28,14 +28,9 @@
         {% endif %}
 
         <div class="onyx-login__actions">
-            <button class="onyx-login__phone" type="button" data-onyx-open-login>
-                <strong>+966</strong>
-                <span>5XX XXX XXXX</span>
-            </button>
-
-            <button class="onyx-login__button onyx-login__button--primary" type="button" data-onyx-open-login>
-                {{ is_rtl ? 'إرسال رمز التحقق' : 'Send verification code' }}
-            </button>
+            <div class="onyx-login__auth">
+                <salla-login-modal inline is-mobile-allowed support-web-auth></salla-login-modal>
+            </div>
 
             <button class="onyx-login__button onyx-login__button--guest" type="button" data-onyx-continue-guest>
                 {{ is_rtl ? 'الدخول كزائر' : 'Continue as guest' }}
