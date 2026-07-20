@@ -85,14 +85,20 @@ $onyx-gold-dark: #9c7424;
   &__footer {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 24px;
-    min-height: 45px;
-    padding-top: 26px;
-    color: rgba(255,255,255,.45);
-    font-size: 12px;
+    min-height: 56px;
+    padding-top: 22px;
+    color: rgba(255,255,255,.72);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    white-space: nowrap;
   }
 
-  &__footer a:hover { color: $onyx-gold; }
+  &__footer span { color: rgba(212,175,110,.65); }
+  &__footer a { color: inherit; text-decoration: none; }
+  &__footer a:hover, &__footer a:focus-visible { color: $onyx-gold; }
 
   @media (min-width: 600px) {
     &__content { margin-block: 24px; border: 1px solid rgba(255,255,255,.08); border-radius: 28px; box-shadow: 0 30px 100px #000; }

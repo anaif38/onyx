@@ -39,7 +39,10 @@
 
         <footer class="onyx-login__footer">
             <a href="{{ store.url }}">{{ is_rtl ? 'الرئيسية' : 'Home' }}</a>
-            {% if store.contacts.email %}<a href="mailto:{{ store.contacts.email }}">{{ is_rtl ? 'الدعم' : 'Support' }}</a>{% endif %}
+            {% if store.contacts.email %}
+                <span aria-hidden="true">•</span>
+                <a href="mailto:{{ store.contacts.email }}">{{ is_rtl ? 'تواصل مع الدعم' : 'Contact support' }}</a>
+            {% endif %}
         </footer>
     </div>
 </section>
