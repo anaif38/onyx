@@ -111,7 +111,8 @@ function initOnyxLogin() {
             }
             window.location.assign(data.redirect_url || window.location.href);
         } catch (error) {
-            setMessage(error?.response?.data?.message || error?.message || 'رمز التحقق غير صحيح', true);
+            console.error('Onyx login verification failed:', error);
+            setMessage('تعذر التحقق من الرمز. تأكد من الرمز وحاول مرة أخرى.', true);
         } finally {
             setBusy(verifyButton, false);
         }
