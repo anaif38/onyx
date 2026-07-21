@@ -1,6 +1,7 @@
 import "lite-youtube-embed";
 import BasePage from "./base-page";
 import Lightbox from "fslightbox";
+import "./onyx-login";
 window.fslightbox = Lightbox;
 
 class Home extends BasePage {

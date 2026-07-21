@@ -7,6 +7,9 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
+    {% if user.type != 'user' %}
+        {% include 'components.onyx.login' %}
+    {% endif %}
     {% component home %}
 {% endblock %}
 {% block scripts %}

@@ -122,7 +122,7 @@
 {# Twilight Components #}
 <salla-offer-modal></salla-offer-modal>
 <salla-search></salla-search>
-<salla-login-modal></salla-login-modal>
+<salla-login-modal is-mobile-allowed support-web-auth></salla-login-modal>
 {% if store.scope %}
     <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
